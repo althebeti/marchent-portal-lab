@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+
+        input{
+            margin-top:20px;
+        }
+
+        input{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        #customers button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 align="center">Merchant Transactions</h1>
+
+<table id="customers">
+    <tr>
+        <th>Date/Time</th>
+        <th>Transaction ID</th>
+        <th>Status</th>
+        <th>Amount</th>
+        <th>Approval code</th>
+        <th>verification Method</th>
+        <th>TID (MID)</th>
+        <th>Quick link</th>
+
+
+    </tr>
+    <tr th:each="transaction: ${transactions}">
+        <td width="10%" th:text="${transaction.date}">Date/Time</td>
+        <td width="10%" th:text="${transaction.transactionId}">Transaction ID</td>
+        <td width="10%" th:text="${transaction.status}">Status</td>
+        <td width="10%" th:text="${transaction.amount}">Amount</td>
+        <td width="10%" th:text="${transaction.approvalCode}">Approval code</td>
+        <td width="10%" th:text="${transaction.verificationMethod}">verification Method</td>
+        <td width="10%" th:text="${transaction.tid}">TID (MID)</td>
+        <td><button><a th:href="@{'/portal/merchantdetails?transactionId=' + ${transaction.transactionId}}">view details</a></button></td>
+
+    </tr>
+</table>
+
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+</form>
+
+</body>
+</html>
+
+

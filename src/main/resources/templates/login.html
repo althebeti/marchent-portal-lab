@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<style>
+    div {text-align: center; color: black}
+    body {background-color: gainsboro;}
+    input{
+        margin-top:20px;
+    }
+
+    button{
+        margin-top:20px;
+    }
+
+    img {
+        width: 25%;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: #f1f1f1;
+        width: 50%;
+        height: 100%;
+        margin: auto;
+    }
+
+</style>
+
+<head>
+    <title>Login</title>
+    <link th:href="@{/css/stylesheet.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/js/login.js}"></script>
+</head>
+<body>
+<div th:if="${param.error}">
+    Invalid username or password.
+</div>
+
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+
+<div class="card">
+
+<div>
+    <img src="https://www.paypalobjects.com/marketing/web/us/en/signupOffer/HeroMan-holding-phone-5.png"></div>
+
+<div>
+    <form th:action="@{/login}" method="post">
+        <label > <strong>User Name</strong></label>
+        <input type="text" name="username" th:required="required" th:autofocus="autofocus"/>
+        <br/>
+
+        <label><strong>Password</strong></label>
+        <input type="password" name="password" th:required="required" />
+        <br/>
+
+        <input type="submit" value="Sign In"/>
+    </form>
+</div>
+
+</div>
+
+
+
+</body>
+</html>

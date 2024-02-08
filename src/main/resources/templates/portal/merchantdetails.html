@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .s{
+            display: flex;
+            border-bottom-style : groove;
+            white-space:pre-wrap;
+        }
+        .button{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 8px 811px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+
+        }
+
+        .g{
+            display: inline;
+            font-weight: bold;
+        }
+
+        .column {
+            float: left;
+            width: 25%;
+            padding: 0 10px;
+        }
+
+        .row {margin: 0 -5px;}
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            padding: 16px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<p> You are Currently Viewing</p>
+
+<div class="s" th:each="transaction: ${transactions}">
+    <p ><strong>Transaction ID : </strong> </p>
+    <p th:text="${transaction.transactionId}"></p>
+
+
+</div>
+
+<div class="s" th:each="transaction: ${transactions}">
+
+<p ><strong>Transaction Date/Time : </strong> </p>
+<p th:text="${transaction.date}"></p>
+
+</div>
+
+<h2>Transaction Detail</h2>
+
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <h3>Sales description</h3>
+            <p>No description.</p>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <h3>Customer Detail</h3>
+            <p >Card Holder Name <strong>Abdulrhman</strong></p>
+            <p>Issuer / card Application    <strong>mada Debit</strong></p>
+            <p >Payment Account No <strong>5888**********7785</strong></p>
+            <p>PAN    <strong>0000</strong></p>
+            <p>Expiry Date    <strong>2212</strong></p>
+        </div>
+    </div>
+
+
+    <div class="column">
+        <div class="card">
+            <h3>Receipt details</h3>
+            <div th:each="transaction: ${transactions}">
+                <p style="display: inline">Mid</p>
+                <p class="g" th:text="${transaction.tid}"></p>
+            </div>
+            <p>Business name</p>
+            <p>Approval code</p>
+            <p>invoice No</p>
+            <p>Ref No</p>
+            <p>Application ID integration card </p>
+            <p>TC</p>
+            <p>mobile user id</p>
+            <p>serial No</p>
+            <p>payment Type</p>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <h3>Transaction detail</h3>
+            <p>Application effective data</p>
+            <p>Application interchange profiler</p>
+            <p>Aplliction useage controller</p>
+            <p>Some text</p>
+            <p>Some text</p>
+            <p>Some text</p>
+            <p>Some text</p>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
